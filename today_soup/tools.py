@@ -1,11 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 
-MAIL_FROM = "chenliangxu68@163.com"
-
-SMTP_SERVER = "smtp.163.com"
-
-MAIL_PW = ""
+from soup_sys.settings import MAIL_PW, MAIL_FROM, SMTP_SERVER
 
 
 def send_mail(mail_to, subject, msg_txt):

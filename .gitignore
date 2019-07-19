@@ -110,9 +110,7 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
-sys_pro/settings.py
-vote_sys/migrations/
-media_sys/migrations/
+settings.py
 *.xlsx
 *.xls
 *.SQL

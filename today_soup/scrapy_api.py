@@ -6,6 +6,7 @@ sys.path.append("/home/louis/Documents/soup_sys")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "soup_sys.settings")
 django.setup()
 
+from soup_sys.settings import TO_MAIL
 from today_soup.tools import send_mail
 from today_soup.models import SoupModel
 
@@ -82,7 +83,7 @@ def send_one_soup_by_day():
     for line in lines:
         text += "<p>%s</p>" % line
 
-    send_mail('chenliangxu68@163.com', '每日靓汤', text)
+    send_mail(TO_MAIL, '每日靓汤', text)
 
 if __name__ == '__main__':
     #req_list = my_requests()

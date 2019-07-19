@@ -127,3 +127,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+
+MAIL_FROM = "chenliangxu68@163.com"
+
+SMTP_SERVER = "smtp.163.com"
+
+MAIL_PW = ""
+
+TO_MAIL = ["vensaint_rowe@126.com", "chenliangxu68@163.com"]
