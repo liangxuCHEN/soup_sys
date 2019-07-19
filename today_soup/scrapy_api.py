@@ -6,6 +6,7 @@ sys.path.append("/home/louis/Documents/soup_sys")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "soup_sys.settings")
 django.setup()
 
+from today_soup.tools import send_mail
 from today_soup.models import SoupModel
 
 session = HTMLSession()
@@ -69,14 +70,27 @@ def my_requests():
     return urls
 
 
+def send_one_soup_by_day():
+    item = SoupModel.objects.all().order_by('?').first()
+    text = ""
 
+    text += "<p>%s</p>" % item.title
+
+    lines = item.content.split('\n')
+    lines += item.how_to_do.split('\n')
+
+    for line in lines:
+        text += "<p>%s</p>" % line
+
+    send_mail('chenliangxu68@163.com', '每日靓汤', text)
 
 if __name__ == '__main__':
-    req_list = my_requests()
+    #req_list = my_requests()
     # loop = asyncio.get_event_loop()
     # tasks = [get_list(url) for url in req_list]
     # loop.run_until_complete(asyncio.wait(tasks))
     # loop.close()
     #get_lists()
-    for url in req_list:
-        get_list(url)
+    # for url in req_list:
+    #     get_list(url)
+    send_one_soup_by_day()

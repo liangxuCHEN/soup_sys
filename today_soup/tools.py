@@ -32,6 +32,5 @@ def send_mail(mail_to, subject, msg_txt):
     return True
 
 
-
 if __name__ == '__main__':
     send_mail('chenliangxu68@163.com', '测试', '<P>测试邮件</P><p>不要回复</p>')
