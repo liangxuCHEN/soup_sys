@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from today_soup import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^$', views.home_page, name='home'),
+    url(r'^login$',  views.LoginView, name='login'),
+    url(r'^logout$', views.LogoutView, name='logout'),
+
+    url(r'^soups$', views.soups_list, name='soups'),
+    url(r'^soup_detail/(?P<p_id>\d+)/$', views.soup_detail, name='soup_detail'),
 ]

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}靓汤{% endblock %}
+{% block content %}
+
+<div class="jumbotron" id="table">
+    <div class="row" style="margin-top:15px">
+        {% for item in content %}
+        <div class="media">
+            <div class="media-left">
+                <a href="{% url 'soup_detail' item.id %}"><img src="{{item.head_url}}" height="64px" width="64px">
+                </a>
+            </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{ item.title }}</h4>
+                    {{ item.content }}
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="pull-right">
+          <ul class="pagination">
+                {% if content.has_previous %}
+                    <li><a href="?page={{ content.previous_page_number }}">《 </a></li>
+                {% endif %}
+                <script type="text/javascript">
+                for (var i=1;i<={{ content.paginator.num_pages }};i++)
+                {
+                 if (i == {{ content.number }}) {
+                    document.write("<li class='active'> <a href='?page=" + i + "'>" + i + "</a></li>");
+                 } else {
+                  document.write("<li> <a href='?page=" + i + "'>" + i + "</a></li>");
+                 }
+                }
+                </script>
+                {% if content.has_next %}
+                   <li> <a href="?page={{ content.next_page_number }}"> 》 </a></li>
+                {% endif %}
+          </ul>
+      </div>
+    </div>
+</div>
+{% endblock %}

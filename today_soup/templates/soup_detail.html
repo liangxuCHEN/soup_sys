@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}靓汤{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="page-header"><h3>{{soup.title}}</h3></div>
+
+        {% for text in lines %}
+            <p>{{text}}</p>
+        {% endfor %}
+
+        {% for img in imgs %}
+            <img src="{{img}}"><br/>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

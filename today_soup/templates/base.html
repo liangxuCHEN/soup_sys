@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Louis">
+    <link rel="bookmark" href="http://img.foshanplus.com/bitbug_favicon.ico">
+    <link rel="shortcut icon" href="http://img.foshanplus.com/bitbug_favicon.ico">
+    {% block head %}
+
+    <link rel="stylesheet" href="http://img.foshanplus.com/css/bootstrap.min.css">
+    <title>{% block title %}内部系统{% endblock %}</title>
+    {% endblock %}
+  </head>
+
+<body role="document">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">navbar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">佛山+舆情</a>
+            </div>
+         <div id="navbar" class="navbar-collapse collapse">
+           <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                {% if request.user.is_authenticated %}
+                <li><a href="/soups" target="_blank">靓汤</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.user.is_authenticated %}
+                <li><a href="#">{{ request.user.username }}</a></li>
+                <li><a href="/logout">登出</a></li>
+
+                {% else %}
+                   <li><a href="/login">登录</a></li>
+                {% endif %}
+            </ul>
+           </div>
+         </div>
+
+</div>
+
+</nav>
+<!-- content -->
+<div class="container">{% block content %}{% endblock %}</div>
+
+<div id="footer">
+        {% block footer %}
+
+        {% endblock %}
+ </div>
+
+
+    {% block script %}
+
+    {% endblock %}
+  </body>
+<script src="http://img.foshanplus.com/js/jquery.js"></script>
+<script src="http://img.foshanplus.com/js/bootstrap.min.js"></script>
+</html>
