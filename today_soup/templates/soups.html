@@ -4,6 +4,24 @@
 
 <div class="jumbotron" id="table">
     <div class="row" style="margin-top:15px">
+        <div class="col-md-6">
+             <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="search(type='text')">Go!</button>
+                  </span>
+                  <input type="text" class="form-control" id="input1" placeholder="搜索内容">
+            </div>
+        </div>
+        <div class="col-md-6">
+             <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="search(type='title')">Go!</button>
+                  </span>
+                  <input type="text" class="form-control" id="input2" placeholder="搜索标题">
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:15px">
         {% for item in content %}
         <div class="media">
             <div class="media-left">
@@ -39,4 +57,25 @@
       </div>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+
+<script>
+    function search(search_for){
+       var url,text
+
+       if(search_for=='title'){
+          url = '/soups?title='
+          text = document.getElementById('input2').value
+       } else {
+          url = '/soups?text='
+          text = document.getElementById('input1').value
+       }
+
+       window.location.href=url+text
+    }
+
+</script>
+
 {% endblock %}

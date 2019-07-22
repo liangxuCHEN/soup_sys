@@ -42,6 +42,17 @@ def LogoutView(request):
 
 def soups_list(request):
     contact_list = SoupModel.objects.all()
+
+    text = request.GET.get('text')
+
+    if text:
+        contact_list = contact_list.filter(content__contains=text)
+
+
+    title = request.GET.get('title')
+    if title:
+        contact_list = contact_list.filter(title__contains=title)
+
     paginator = Paginator(contact_list, 8)
 
     page = request.GET.get('page')
